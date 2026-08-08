@@ -362,7 +362,74 @@ function findBenefits(){
  if($('bInsurance').checked)out.push(['VA Life Insurance','Review current VA life insurance options and eligibility.']);
  $('benefitResult').innerHTML=`<div class="card"><h2>Areas to Investigate</h2>${out.length?'<ul>'+out.map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('')+'</ul>':'<p>Select at least one area above.</p>'}<div class="notice">Eligibility is determined by VA or the applicable program—not by this tool.</div></div>`;
 }
-    
+  function showBenefitsByRating() {
+
+    const rating = document.getElementById("rating").value;
+    const state = document.getElementById("state").value;
+
+    if (rating === "" || state === "") {
+        document.getElementById("ratingBenefits").innerHTML =
+        "<div class='notice danger'><b>Please select both a disability rating and a state.</b></div>";
+        return;
+    }
+
+    let html = "";
+
+    html += "<div class='card'>";
+    html += "<h2>🇺🇸 Benefits Summary</h2>";
+    html += "<p><strong>VA Rating:</strong> " + rating + "</p>";
+    html += "<p><strong>State:</strong> " + state + "</p>";
+
+    html += "<hr>";
+
+    html += "<h3>🇺🇸 Federal Benefits</h3><ul>";
+
+    if (rating == "0")
+        html += "<li>VA Health Care eligibility may be available for qualifying Veterans.</li>";
+
+    if (parseInt(rating) >= 10)
+        html += "<li>Monthly VA Disability Compensation</li>";
+
+    if (parseInt(rating) >= 30)
+        html += "<li>Additional Compensation for Eligible Dependents</li>";
+
+    if (parseInt(rating) >= 50)
+        html += "<li>Priority Group VA Health Care</li>";
+
+    if (rating == "100") {
+        html += "<li>CHAMPVA for eligible dependents</li>";
+        html += "<li>Dental Benefits</li>";
+        html += "<li>Commissary & Exchange Privileges</li>";
+    }
+
+    if (rating == "TDIU")
+        html += "<li>TDIU may qualify for many benefits similar to a 100% evaluation depending on VA determination.</li>";
+
+    if (rating == "P&T")
+        html += "<li>Permanent & Total status may qualify for additional federal and state benefits.</li>";
+
+    html += "</ul>";
+
+    html += "<h3>🏛 State Benefits</h3>";
+    html += "<ul>";
+    html += "<li>Property Tax Programs (varies by state)</li>";
+    html += "<li>Vehicle Registration Benefits</li>";
+    html += "<li>Driver License Benefits</li>";
+    html += "<li>Hunting & Fishing Licenses</li>";
+    html += "<li>State Park Passes</li>";
+    html += "<li>Education Benefits</li>";
+    html += "<li>Employment Preference</li>";
+    html += "<li>Veterans Homes</li>";
+    html += "</ul>";
+
+    html += "<div class='notice'>";
+    html += "Always verify benefits with your state's Department of Veterans Affairs and VA.gov.";
+    html += "</div>";
+
+    html += "</div>";
+
+    document.getElementById("ratingBenefits").innerHTML = html;
+}  
 
 const sources=[
  ['VA — Evidence Needed for Your Disability Claim','https://www.va.gov/disability/how-to-file-claim/evidence-needed/'],
