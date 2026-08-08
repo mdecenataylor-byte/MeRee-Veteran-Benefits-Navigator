@@ -255,7 +255,8 @@ function findBenefits(){
  if($('bFinancial').checked)out.push(['Pension / Financial Assistance','Investigate income-based and hardship-related programs where applicable.']);
  if($('bInsurance').checked)out.push(['VA Life Insurance','Review current VA life insurance options and eligibility.']);
  $('benefitResult').innerHTML=`<div class="card"><h2>Areas to Investigate</h2>${out.length?'<ul>'+out.map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('')+'</ul>':'<p>Select at least one area above.</p>'}<div class="notice">Eligibility is determined by VA or the applicable program—not by this tool.</div></div>`;
-}function showBenefitsByRating(){
+}
+    function showBenefitsByRating(){
 
     const rating = document.getElementById("rating").value;
     const state = document.getElementById("state").value;
