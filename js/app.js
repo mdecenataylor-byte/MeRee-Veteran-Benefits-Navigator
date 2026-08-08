@@ -1,168 +1,127 @@
-document.addEventListener("DOMContentLoaded",()=>{
+<!DOCTYPE html>
+<html lang="en">
 
-console.log("MeRee Veteran Benefits Navigator Version 2.0 Loaded");
+<head>
 
-});
-function showBenefits() {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    const rating = document.getElementById("rating").value;
-    const state = document.getElementById("state").value;
+<title>Benefits Finder</title>
 
-    if (rating === "") {
-        alert("Please select your disability rating.");
-        return;
-    }
+<link rel="stylesheet" href="css/style.css">
 
-    document.getElementById("results").style.display = "block";
-    document.getElementById("title").innerHTML =
-        rating + " Veteran Benefits";
+</head>
 
-    let va = [];
-    let federal = [];
-    let stateBenefits = [];
+<body>
 
-    switch (rating) {
+<header>
 
-        case "0%":
-            va = [
-                "Service-connected disability recognized",
-                "VA Health Care (if eligible)",
-                "VA Home Loan"
-            ];
-            break;
+<h1>🇺🇸 Veteran Benefits Navigator</h1>
 
-        case "10%":
-            va = [
-                "Monthly VA Compensation",
-                "VA Health Care",
-                "VA Home Loan"
-            ];
-            break;
+<p>Benefits Finder</p>
 
-        case "20%":
-            va = [
-                "Monthly VA Compensation",
-                "VA Health Care",
-                "VA Home Loan"
-            ];
-            break;
+<nav>
 
-        case "30%":
-            va = [
-                "Monthly VA Compensation",
-                "Additional compensation for eligible dependents",
-                "VA Health Care",
-                "VA Home Loan"
-            ];
-            break;
+<a href="index.html">Home</a>
 
-        case "40%":
-            va = [
-                "Monthly VA Compensation",
-                "Dependent Compensation",
-                "VA Health Care"
-            ];
-            break;
+<a href="benefits.html">Benefits</a>
 
-        case "50%":
-            va = [
-                "Priority Group 1 VA Health Care",
-                "Travel Reimbursement",
-                "Monthly Compensation",
-                "Dependent Compensation"
-            ];
-            break;
+</nav>
 
-        case "60%":
-            va = [
-                "Priority Group 1 Health Care",
-                "Travel Pay",
-                "Monthly Compensation"
-            ];
-            break;
+</header>
 
-        case "70%":
-            va = [
-                "Priority Group 1 Health Care",
-                "Travel Pay",
-                "Vocational Rehabilitation (if eligible)",
-                "Possible Individual Unemployability",
-                "Monthly Compensation"
-            ];
-            break;
+<main>
 
-        case "80%":
-            va = [
-                "Monthly Compensation",
-                "Priority Group 1 Health Care",
-                "Travel Pay"
-            ];
-            break;
+<section class="card">
 
-        case "90%":
-            va = [
-                "Monthly Compensation",
-                "Priority Group 1 Health Care",
-                "Travel Pay"
-            ];
-            break;
+<h2>Benefits Finder</h2>
 
-        case "100%":
+<p>
+Select your VA disability rating and state to view benefits.
+</p>
 
-        case "Permanent & Total":
-            va = [
-                "Maximum Monthly Compensation",
-                "CHAMPVA (eligible dependents)",
-                "Chapter 35 DEA",
-                "Dental Care",
-                "Travel Pay",
-                "Possible Property Tax Relief",
-                "Caregiver Programs"
-            ];
-            break;
+<label>Disability Rating</label>
 
-        case "TDIU":
-            va = [
-                "Paid at the 100% compensation rate",
-                "Health Care",
-                "Travel Pay",
-                "Possible Chapter 35 benefits"
-            ];
-            break;
-    }
+<select id="rating">
 
-    federal = [
-        "Veterans Preference for Federal Employment",
-        "National Parks Lifetime Pass",
-        "USAJobs Veteran Hiring Programs",
-        "Federal Training Opportunities"
-    ];
+<option value="">Select Rating</option>
 
-    if (state === "South Carolina") {
+<option>0%</option>
+<option>10%</option>
+<option>20%</option>
+<option>30%</option>
+<option>40%</option>
+<option>50%</option>
+<option>60%</option>
+<option>70%</option>
+<option>80%</option>
+<option>90%</option>
+<option>100%</option>
+<option>TDIU</option>
+<option>Permanent & Total</option>
 
-        stateBenefits = [
-            "Possible Property Tax Exemption",
-            "Free Hunting & Fishing License (if eligible)",
-            "State Park Discounts",
-            "SC Veterans Homes",
-            "Education Assistance Programs"
-        ];
+</select>
 
-    } else {
+<label>State</label>
 
-        stateBenefits = [
-            "State benefits vary. Check your State Department of Veterans Affairs."
-        ];
+<select id="state">
 
-    }
+<option value="">Select State</option>
 
-    document.getElementById("vaBenefits").innerHTML =
-        va.map(item => "<li>" + item + "</li>").join("");
+<option>South Carolina</option>
+<option>Florida</option>
+<option>Georgia</option>
+<option>North Carolina</option>
+<option>Virginia</option>
+<option>Texas</option>
+<option>California</option>
 
-    document.getElementById("federalBenefits").innerHTML =
-        federal.map(item => "<li>" + item + "</li>").join("");
+</select>
 
-    document.getElementById("stateBenefits").innerHTML =
-        stateBenefits.map(item => "<li>" + item + "</li>").join("");
+<br><br>
+  
+<button onclick="showBenefitsByRating()">
 
-}
+Show My Benefits
+
+</button>
+
+</section>
+
+<div id="results" style="display:none;">
+
+<section class="card">
+
+<h2 id="title"></h2>
+
+<h3>🏥 VA Benefits</h3>
+
+<ul id="vaBenefits"></ul>
+
+</section>
+
+<section class="card">
+
+<h3>🇺🇸 Federal Benefits</h3>
+
+<ul id="federalBenefits"></ul>
+
+</section>
+
+<section class="card">
+
+<h3>🏛 State Benefits</h3>
+
+<ul id="stateBenefits"></ul>
+
+</section>
+
+</div>
+
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
