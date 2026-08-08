@@ -387,16 +387,16 @@ const ratingNumber = parseInt(rating);
 
     html += "<h3>🇺🇸 Federal Benefits</h3><ul>";
 
-    if(rating >= 10)
-        html += "<li>Monthly VA Disability Compensation</li>";
+  if(ratingNumber >= 10)
+    html += "<li>Monthly VA Disability Compensation</li>";
 
-    if(rating >= 30)
-        html += "<li>Additional Compensation for Dependents</li>";
+if(ratingNumber >= 30)
+    html += "<li>Additional Compensation for Dependents</li>";
 
-    if(rating >= 50)
-        html += "<li>Priority VA Health Care</li>";
+if(ratingNumber >= 50)
+    html += "<li>Priority VA Health Care</li>";
 
-    if(rating >= 100){
+if(ratingNumber >= 100){
         html += "<li>CHAMPVA for eligible dependents</li>";
         html += "<li>Commissary & Exchange privileges</li>";
         html += "<li>Dental Benefits</li>";
