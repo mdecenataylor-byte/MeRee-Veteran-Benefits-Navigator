@@ -1,225 +1,191 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Veteran Benefits Navigator — Claim & Evidence Assistant</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefits Finder | Veteran Benefits Navigator</title>
+
+<link rel="stylesheet" href="css/style.css">
+
 <style>
-:root{--navy:#12324a;--blue:#1f6f9f;--gold:#c69a3a;--bg:#f4f7f9;--card:#fff;--text:#20303c;--muted:#667784;--green:#2e7d52;--yellow:#a56b00;--red:#a43d3d;--line:#d9e2e8}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.45}
-header{background:linear-gradient(135deg,var(--navy),#1c5677);color:white;padding:28px 18px}
-.wrap{max-width:1050px;margin:auto}.brand{font-size:28px;font-weight:800}.sub{opacity:.9;margin-top:5px}
-nav{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}nav button{border:1px solid #ffffff44;background:#ffffff12;color:#fff;padding:10px 13px;border-radius:999px;cursor:pointer}nav button.active{background:white;color:var(--navy)}
-main{padding:22px 14px 60px}.tab{display:none}.tab.active{display:block}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 2px 8px #12324a0d;margin-bottom:15px}
-h1,h2,h3{color:var(--navy)}h1{font-size:27px}h2{margin-top:0;font-size:21px}h3{font-size:16px}
-label{display:block;font-weight:650;margin:12px 0 5px}input,select,textarea{width:100%;padding:11px;border:1px solid #cbd7df;border-radius:9px;font:inherit;background:#fff}textarea{min-height:90px}
-button.primary{background:var(--blue);color:white;border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer}.secondary{background:#eef4f7;border:1px solid var(--line);border-radius:9px;padding:10px 14px;cursor:pointer}
-.row{display:flex;gap:10px;flex-wrap:wrap}.pill{display:inline-block;padding:5px 9px;border-radius:999px;font-size:13px;font-weight:700;margin:3px}.green{background:#e3f2e9;color:var(--green)}.yellow{background:#fff1d3;color:var(--yellow)}.red{background:#f8e2e2;color:var(--red)}.blue{background:#e4f0f8;color:#175b82}
-.score{font-size:42px;font-weight:800;color:var(--navy)}.bar{height:13px;background:#e7edf1;border-radius:99px;overflow:hidden}.fill{height:100%;background:var(--blue);width:0}
-.small{font-size:13px;color:var(--muted)}.notice{padding:13px;border-left:5px solid var(--gold);background:#fff9eb;border-radius:8px}.success{border-left-color:var(--green);background:#edf8f1}.danger{border-left-color:var(--red);background:#fff0f0}
-table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;border-bottom:1px solid var(--line);vertical-align:top}.source{font-size:13px;margin:7px 0}.source a{color:var(--blue)}
-.check{display:flex;align-items:flex-start;gap:9px;margin:8px 0}.check input{width:auto;margin-top:5px}
-footer{max-width:1050px;margin:auto;padding:0 14px 40px;color:var(--muted);font-size:12px}
-@media(max-width:600px){.brand{font-size:23px}}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+    margin-bottom:25px;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    font-size:18px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+button{
+    background:#1f5f8b;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:8px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#12466b;
+}
+
+.result{
+    margin-top:25px;
+    display:none;
+}
+
+h2{
+    color:#12324a;
+}
+
+.section{
+    background:#f5f7fa;
+    padding:18px;
+    border-radius:8px;
+    margin-top:20px;
+}
+
+ul{
+    line-height:2;
+}
+
 </style>
+
 </head>
+
 <body>
-<header>
-<div class="wrap">
-<div class="brand">🇺🇸 Veteran Benefits Navigator</div>
-<div class="sub">Claim • Evidence • Rating • Benefits • Next Steps</div>
+
+<header class="topbar">
+
+<h1>🇺🇸 Veteran Benefits Finder</h1>
+
 <nav>
-<button class="tabbtn active" data-tab="home">Dashboard</button>
-<button class="tabbtn" data-tab="claim">Claim Review</button>
-<button class="tabbtn" data-tab="rating">Combined Rating</button>
-<button class="tabbtn" data-tab="benefits">Benefits Finder</button>
-<button class="tabbtn" data-tab="resources">Resources</button>
+
+<a href="index.html">Home</a>
+
+<a href="benefits.html">Benefits</a>
+
 </nav>
-</div>
+
 </header>
 
-<main class="wrap">
-<section id="home" class="tab active">
+<div class="container">
+
 <div class="card">
-<h1>Help a Veteran understand the evidence.</h1>
-<p>This free prototype organizes a Veteran's information and compares it with general VA evidence concepts. It does <b>not</b> predict a VA decision, guarantee a rating, or replace an accredited representative, attorney, claims agent, or medical professional.</p>
-<div class="notice success"><b>Core rule:</b> Document what is true. Do not exaggerate symptoms, manufacture evidence, or assume a condition is service connected simply because it appears on a checklist.</div>
-</div>
-<div class="grid">
-<div class="card"><h2>📋 Claim Review</h2><p>Build an evidence checklist for direct, secondary, increased, presumptive, or supplemental claims.</p><button class="primary" onclick="showTab('claim')">Start Review</button></div>
-<div class="card"><h2>🧮 Combined Rating</h2><p>Use the VA-style combined-rating method for a basic estimate. This version does not apply the bilateral factor.</p><button class="primary" onclick="showTab('rating')">Calculate</button></div>
-<div class="card"><h2>🎁 Benefits Finder</h2><p>Identify benefit areas worth investigating based on answers you provide.</p><button class="primary" onclick="showTab('benefits')">Find Benefits</button></div>
-</div>
-</section>
 
-<section id="claim" class="tab">
-<div class="card">
-<h1>📋 Claim & Evidence Review</h1>
-<div class="grid">
-<div><label>Claim type</label><select id="claimType">
-<option value="direct">New / Direct Service Connection</option>
-<option value="secondary">Secondary Service Connection</option>
-<option value="increase">Increased Evaluation</option>
-<option value="presumptive">Presumptive Condition</option>
-<option value="supplemental">Supplemental Claim</option>
-<option value="appeal">Decision Review / Appeal Preparation</option>
-</select></div>
-<div><label>Condition</label><input id="condition" placeholder="Example: right knee condition"></div>
+<h2>Find Benefits by Disability Rating</h2>
+
+<p>Select your disability rating and state.</p>
+
+<select id="rating">
+
+<option value="">Choose Rating</option>
+
+<option>0%</option>
+<option>10%</option>
+<option>20%</option>
+<option>30%</option>
+<option>40%</option>
+<option>50%</option>
+<option>60%</option>
+<option>70%</option>
+<option>80%</option>
+<option>90%</option>
+<option>100%</option>
+<option>TDIU</option>
+<option>Permanent & Total</option>
+
+</select>
+
+<select id="state">
+
+<option value="">Choose State</option>
+
+<option>Alabama</option>
+<option>Alaska</option>
+<option>Arizona</option>
+<option>Arkansas</option>
+<option>California</option>
+<option>Colorado</option>
+<option>Connecticut</option>
+<option>Delaware</option>
+<option>Florida</option>
+<option>Georgia</option>
+<option>South Carolina</option>
+
+</select>
+
+<button onclick="showBenefits()">Show My Benefits</button>
+
+<div id="results" class="result">
+
+<h2 id="title"></h2>
+
+<div class="section">
+
+<h3>🏥 VA Benefits</h3>
+
+<ul id="vaBenefits"></ul>
+
 </div>
-<h3>Evidence currently available</h3>
-<div class="grid">
-<label class="check"><input type="checkbox" id="diagnosis"> Current diagnosis / competent evidence of current disability</label>
-<label class="check"><input type="checkbox" id="serviceEvent"> In-service event, injury, disease, or qualifying service evidence</label>
-<label class="check"><input type="checkbox" id="nexus"> Nexus / relationship evidence when applicable</label>
-<label class="check"><input type="checkbox" id="currentTx"> Current treatment or medical records</label>
-<label class="check"><input type="checkbox" id="lay"> Lay / buddy / supporting statement</label>
-<label class="check"><input type="checkbox" id="severity"> Evidence describing severity / functional impact</label>
-<label class="check"><input type="checkbox" id="exam"> C&P / DBQ / examination evidence</label>
-<label class="check"><input type="checkbox" id="decision"> Prior VA decision / rationale (if applicable)</label>
-<label class="check"><input type="checkbox" id="newRelevant"> New and relevant evidence (for supplemental claim)</label>
+
+<div class="section">
+
+<h3>🇺🇸 Federal Benefits</h3>
+
+<ul id="federalBenefits"></ul>
+
 </div>
-<label>What does the Veteran report?</label>
-<textarea id="reported" placeholder="Describe symptoms, frequency, flare-ups, limitations, onset, treatment, work impact, and what happens during a typical bad day. Stick to facts."></textarea>
-<label>What evidence is missing or uncertain?</label>
-<textarea id="missing" placeholder="Example: no nexus opinion, private records not uploaded, unclear range-of-motion findings..."></textarea>
-<br><button class="primary" onclick="analyzeClaim()">Analyze Evidence</button>
+
+<div class="section">
+
+<h3>🏛 State Benefits</h3>
+
+<ul id="stateBenefits"></ul>
+
 </div>
-<div id="claimResult"></div>
-</section>
 
-<section id="rating" class="tab">
-<div class="card">
-<h1>🧮 Combined Rating Calculator</h1>
-<p>Enter individual service-connected evaluations. The calculation combines disabilities rather than simply adding percentages.</p>
-<label>Ratings (comma-separated)</label>
-<input id="ratings" placeholder="Example: 50, 30, 20">
-<br><br><button class="primary" onclick="calcRating()">Calculate</button>
-<div id="ratingResult"></div>
-<div class="notice"><b>Important:</b> This basic calculator does not apply every special rule, including the bilateral factor or certain special monthly compensation rules. Use it as an educational estimate, not an official VA calculation.</div>
+<div class="section">
+
+<h3>💡 Helpful Resources</h3>
+
+<ul>
+
+<li>VA.gov</li>
+
+<li>National Parks Military Pass</li>
+
+<li>USAJobs Veterans</li>
+
+<li>State Department of Veterans Affairs</li>
+
+</ul>
+
 </div>
-</section>
 
-<section id="benefits" class="tab">
-<div class="card">
-<h1>🎁 Benefits Finder</h1>
-<p>Check areas that may be worth investigating. This is a screening tool, not an eligibility determination.</p>
-<div class="grid">
-<label class="check"><input type="checkbox" id="bDisability"> I have a disability or symptoms related to service</label>
-<label class="check"><input type="checkbox" id="bExisting"> I already have a VA service-connected rating</label>
-<label class="check"><input type="checkbox" id="bSchool"> I want education or job training</label>
-<label class="check"><input type="checkbox" id="bWork"> I need employment/career support</label>
-<label class="check"><input type="checkbox" id="bHome"> I am buying/adapting a home or have housing concerns</label>
-<label class="check"><input type="checkbox" id="bFamily"> I have a spouse, children, caregiver, or survivor-benefit question</label>
-<label class="check"><input type="checkbox" id="bExposure"> I served in an area or situation involving a possible military exposure</label>
-<label class="check"><input type="checkbox" id="bFinancial"> I have a financial hardship or income-related concern</label>
-<label class="check"><input type="checkbox" id="bInsurance"> I need VA life insurance information</label>
 </div>
-<br><button class="primary" onclick="findBenefits()">Find Areas to Investigate</button>
+
 </div>
-<div id="benefitResult"></div>
-</section>
 
-<section id="resources" class="tab">
-<div class="card">
-<h1>🔎 Official Resources</h1>
-<p>Use official government sources whenever possible. Links below open in a new tab.</p>
-<div id="sources"></div>
 </div>
-</section>
-</main>
 
-<footer>
-<b>Educational use only.</b> This prototype is not affiliated with, endorsed by, or operated by the U.S. Department of Veterans Affairs. It cannot determine entitlement, service connection, a disability evaluation, effective dates, or appeal success. Always verify current requirements with VA.gov, the Code of Federal Regulations, and an accredited representative when appropriate.
-</footer>
+<script src="js/app.js"></script>
 
-<script>
-const $=id=>document.getElementById(id);
-function showTab(id){
- document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
- document.querySelectorAll('.tabbtn').forEach(x=>x.classList.remove('active'));
- $(id).classList.add('active');
- document.querySelector(`[data-tab="${id}"]`).classList.add('active');
- window.scrollTo({top:0,behavior:'smooth'});
-}
-document.querySelectorAll('.tabbtn').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
-
-const claimChecks=['diagnosis','serviceEvent','nexus','currentTx','lay','severity','exam','decision','newRelevant'];
-function analyzeClaim(){
- const type=$('claimType').value, condition=$('condition').value.trim()||'this condition';
- let items=claimChecks.map(id=>({id,yes:$(id).checked}));
- let score=0;
- const weights={diagnosis:20,serviceEvent:20,nexus:20,currentTx:10,lay:5,severity:10,exam:5,decision:5,newRelevant:5};
- items.forEach(x=>{if(x.yes)score+=weights[x.id]});
- if(type==='increase'){score-=items.find(x=>x.id==='serviceEvent').yes?0:10}
- score=Math.max(0,Math.min(100,score));
- let level=score>=80?'STRONGER EVIDENCE SET':score>=60?'MODERATE EVIDENCE SET':score>=40?'PARTIAL EVIDENCE SET':'SIGNIFICANT GAPS IDENTIFIED';
- let cls=score>=80?'green':score>=60?'blue':score>=40?'yellow':'red';
- let missing=items.filter(x=>!x.yes).map(x=>({
-  diagnosis:'Current diagnosis / evidence of current disability',
-  serviceEvent:'In-service event, injury, disease, or qualifying service evidence',
-  nexus:'Relationship/nexus evidence when applicable',
-  currentTx:'Current treatment or medical records',
-  lay:'Lay/buddy/supporting statement where useful',
-  severity:'Evidence describing severity and functional impact',
-  exam:'C&P/DBQ/examination evidence if applicable',
-  decision:'Prior VA decision and reasons if this is a review',
-  newRelevant:'New and relevant evidence for a supplemental claim'
- }[x.id])).filter(Boolean);
- let claimSpecific='';
- if(type==='direct') claimSpecific='For a direct claim, VA generally looks for a current disability, an in-service event/injury/disease, and a relationship between them.';
- if(type==='secondary') claimSpecific='For a secondary claim, the key question is generally whether the new condition is linked to an already service-connected disability.';
- if(type==='increase') claimSpecific='For an increase, current evidence showing worsening severity is especially important.';
- if(type==='presumptive') claimSpecific='For a presumptive claim, qualifying service and a covered condition can change what must be proven; verify the exact presumption.';
- if(type==='supplemental') claimSpecific='For a supplemental claim, focus on evidence that is new and relevant to the previously decided issue.';
- if(type==='appeal') claimSpecific='For decision review, compare the reasons for denial/decision with the evidence and the review lane requirements.';
- $('claimResult').innerHTML=`
- <div class="card"><h2>Result: <span class="pill ${cls}">${level}</span></h2>
- <div class="score">${score}/100</div><div class="bar"><div class="fill" style="width:${score}%"></div></div>
- <p><b>Condition:</b> ${escapeHtml(condition)}</p><p>${claimSpecific}</p>
- <div class="notice"><b>Potential outcome:</b> This tool does not calculate a probability of approval or a guaranteed rating. The score reflects only how many evidence areas were documented in this checklist. A strong score can still result in a denial, and a lower score can change as evidence is developed.</div>
- <h3>Evidence gaps to review</h3>${missing.length?'<ul>'+missing.map(x=>'<li>'+escapeHtml(x)+'</li>').join('')+'</ul>':'<p>None identified by this checklist. That does not mean the claim is complete.</p>'}
- <h3>Veteran's report</h3><p>${escapeHtml($('reported').value)||'No report entered.'}</p>
- <h3>Additional notes</h3><p>${escapeHtml($('missing').value)||'None entered.'}</p>
- </div>`;
-}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
-
-function calcRating(){
- let vals=$('ratings').value.split(',').map(x=>parseFloat(x.trim())).filter(x=>Number.isFinite(x)&&x>=0&&x<=100).sort((a,b)=>b-a);
- let remaining=100, combined=0, rows=[];
- vals.forEach(r=>{let added=remaining*r/100;combined+=added;remaining-=added;rows.push({r,added,combined});});
- let rounded=Math.round(combined/10)*10;
- if(rounded>100)rounded=100;
- $('ratingResult').innerHTML=`<div class="card"><h2>Estimated Combined Evaluation</h2><div class="score">${rounded}%</div>
- <p>Unrounded combined value: <b>${combined.toFixed(1)}%</b></p>
- <table><tr><th>Rating</th><th>Added value</th><th>Running total</th></tr>${rows.map(x=>`<tr><td>${x.r}%</td><td>${x.added.toFixed(1)}</td><td>${x.combined.toFixed(1)}</td></tr>`).join('')}</table>
- <p class="small">The final value is rounded to the nearest 10 for this basic calculation. Special rules may change an actual VA result.</p></div>`;
-}
-
-function findBenefits(){
- let out=[];
- if($('bDisability').checked)out.push(['Disability Compensation','Review direct, secondary, increased, presumptive, and other disability claim paths.']);
- if($('bExisting').checked)out.push(['Increased Evaluation / Secondary Claims','Review worsening conditions and possible conditions secondary to service-connected disabilities.']);
- if($('bSchool').checked)out.push(['Education Benefits','Investigate GI Bill and other education programs.']);
- if($('bWork').checked)out.push(['VR&E / Employment','Investigate Veteran Readiness and Employment and other employment resources.']);
- if($('bHome').checked)out.push(['Housing / Home Loans','Investigate VA home loan benefits and disability-related housing programs.']);
- if($('bFamily').checked)out.push(['Family / Caregiver / Survivor Benefits','Review family, caregiver, dependent education, CHAMPVA, survivor, and related programs.']);
- if($('bExposure').checked)out.push(['Military Exposure / Presumptives','Check current VA exposure information and exact qualifying service/condition requirements.']);
- if($('bFinancial').checked)out.push(['Pension / Financial Assistance','Investigate income-based and hardship-related programs where applicable.']);
- if($('bInsurance').checked)out.push(['VA Life Insurance','Review current VA life insurance options and eligibility.']);
- $('benefitResult').innerHTML=`<div class="card"><h2>Areas to Investigate</h2>${out.length?'<ul>'+out.map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('')+'</ul>':'<p>Select at least one area above.</p>'}<div class="notice">Eligibility is determined by VA or the applicable program—not by this tool.</div></div>`;
-}
-const sources=[
- ['VA — Evidence Needed for Your Disability Claim','https://www.va.gov/disability/how-to-file-claim/evidence-needed/'],
- ['VA — How to File a VA Disability Claim','https://www.va.gov/disability/how-to-file-claim/'],
- ['VA — What Happens After You File a Claim','https://www.va.gov/disability/after-you-file-claim/'],
- ['VA — Upload Evidence','https://www.va.gov/disability/upload-supporting-evidence/'],
- ['VA — Accredited Representatives','https://www.va.gov/get-help-from-accredited-representative/'],
- ['VA — Benefits and Resources','https://www.va.gov/resources/'],
- ['eCFR — Title 38, Part 4: Schedule for Rating Disabilities','https://www.ecfr.gov/current/title-38/chapter-I/part-4']
-];
-$('sources').innerHTML=sources.map(s=>`<div class="source">🔗 <a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a></div>`).join('');
-</script>
 </body>
 </html>
