@@ -1,1 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>MeRee Veteran Benefits Navigator</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+🇺🇸 MeRee Veteran Benefits Navigator
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="benefits.html">Benefits Finder</a>
+
+<a href="calculator.html">Calculator</a>
+
+<a href="federal.html">Federal Benefits</a>
+
+<a href="states.html">State Benefits</a>
+
+<a href="resources.html">Resources</a>
+
+<a href="about.html">About</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>
+
+Helping Veterans Navigate Their Benefits
+
+</h1>
+
+<p>
+
+Free educational tools to help Veterans understand benefits, organize information,
+and prepare for conversations with accredited representatives.
+
+</p>
+
+<a href="benefits.html" class="button">
+
+Start Benefits Finder
+
+</a>
+
+</section>
+
+<section class="search-section">
+
+<h2>
+
+Search Benefits
+
+</h2>
+
+<input
+type="text"
+placeholder="Search VA benefits, programs, education..."
+>
+
+</section>
+
+<section class="cards">
+
+<div class="card">
+
+<h2>🎖 Benefits Finder</h2>
+
+<p>
+
+Discover federal, VA, and state benefit programs based on your situation.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🧮 Rating Calculator</h2>
+
+<p>
+
+Educational VA combined rating calculator.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🇺🇸 Federal Benefits</h2>
+
+<p>
+
+Explore education, housing, employment, health care, and family programs.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🌎 State Benefits</h2>
+
+<p>
+
+Beginning with South Carolina and expanding to every state.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📚 Benefits Library</h2>
+
+<p>
+
+Plain-language explanations of VA programs.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📄 Resources</h2>
+
+<p>
+
+Official links and trusted Veteran resources.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="ratings">
+
+<h2>
+
+Benefits by Disability Rating
+
+</h2>
+
+<div class="rating-grid">
+
+<a href="#">0%</a>
+
+<a href="#">10%</a>
+
+<a href="#">20%</a>
+
+<a href="#">30%</a>
+
+<a href="#">40%</a>
+
+<a href="#">50%</a>
+
+<a href="#">60%</a>
+
+<a href="#">70%</a>
+
+<a href="#">80%</a>
+
+<a href="#">90%</a>
+
+<a href="#">100%</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+Version 2.0
+
+</p>
+
+<p>
+
+This website is an independent educational resource.
+
+It is not affiliated with the U.S. Department of Veterans Affairs.
+
+Eligibility for benefits is determined by the VA or the applicable agency.
+
+</p>
+
+</footer>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
