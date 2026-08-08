@@ -364,8 +364,9 @@ function findBenefits(){
 }
     function showBenefitsByRating(){
 
-    const rating = document.getElementById("rating").value;
-    const state = document.getElementById("state").value;
+        const rating = document.getElementById("rating").value;
+const ratingNumber = parseInt(rating);
+
 
     if(rating==="" || state===""){
         document.getElementById("ratingBenefits").innerHTML =
