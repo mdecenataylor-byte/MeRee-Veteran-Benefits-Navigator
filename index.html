@@ -362,68 +362,7 @@ function findBenefits(){
  if($('bInsurance').checked)out.push(['VA Life Insurance','Review current VA life insurance options and eligibility.']);
  $('benefitResult').innerHTML=`<div class="card"><h2>Areas to Investigate</h2>${out.length?'<ul>'+out.map(x=>`<li><b>${x[0]}</b> — ${x[1]}</li>`).join('')+'</ul>':'<p>Select at least one area above.</p>'}<div class="notice">Eligibility is determined by VA or the applicable program—not by this tool.</div></div>`;
 }
-    function showBenefitsByRating(){
-
-        const rating = document.getElementById("rating").value;
-const ratingNumber = parseInt(rating);
-    const state = document.getElementById("state").value;
-
-    if(rating==="" || state===""){
-        document.getElementById("ratingBenefits").innerHTML =
-        "<div class='notice danger'><b>Please select both a disability rating and a state.</b></div>";
-        return;
-    }
-
-    let html = "";
-
-    html += "<div class='card'>";
-    html += "<h2>Benefits Summary</h2>";
-
-        html += "<p><strong>VA Rating:</strong> " + rating + "</p>";
-
-    html += "<p><strong>State:</strong> " + state + "</p>";
-
-    html += "<hr>";
-
-    html += "<h3>🇺🇸 Federal Benefits</h3><ul>";
-
-  if(ratingNumber >= 10)
-    html += "<li>Monthly VA Disability Compensation</li>";
-
-if(ratingNumber >= 30)
-    html += "<li>Additional Compensation for Dependents</li>";
-
-if(ratingNumber >= 50)
-    html += "<li>Priority VA Health Care</li>";
-
-if(ratingNumber >= 100){
-        html += "<li>CHAMPVA for eligible dependents</li>";
-        html += "<li>Commissary & Exchange privileges</li>";
-        html += "<li>Dental Benefits</li>";
-    }
-
-    html += "</ul>";
-
-    html += "<h3>🏛 State Benefits</h3>";
-
-    html += "<ul>";
-    html += "<li>Property Tax Exemptions (varies by state)</li>";
-    html += "<li>Vehicle Registration Discounts</li>";
-    html += "<li>Driver License Benefits</li>";
-    html += "<li>Hunting & Fishing Licenses</li>";
-    html += "<li>State Park Passes</li>";
-    html += "<li>Education Benefits</li>";
-    html += "<li>Employment Preference</li>";
-    html += "<li>Veterans Homes</li>";
-    html += "</ul>";
-
-    html += "<div class='notice'>";
-    html += "Always verify benefits with your state's Department of Veterans Affairs and VA.gov.";
-    html += "</div>";
-
-    html += "</div>";
-
-    document.getElementById("ratingBenefits").innerHTML = html;
+    
 
 }
 const sources=[
